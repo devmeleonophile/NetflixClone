@@ -4,6 +4,7 @@ import "./Banner.css";
 import { redirect, useLocation, useNavigate } from "react-router-dom";
 function Banner({ fetchData }) {
   const [movie, setMovie] = useState([]);
+  const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +30,17 @@ function Banner({ fetchData }) {
       }
     });
   };
+  const toList = () => {
+    navigate("/addList", {
+      state: {
+        value: movie
+      }
+    });
+  };
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
 
   return (
     <header
@@ -47,9 +59,11 @@ function Banner({ fetchData }) {
           <button className="button" onClick={() => redirect()}>
             play
           </button>
-          <button className="button">MyList</button>
+          <button className="button" onClick={() => toList()}>
+            MyList
+          </button>
         </div>
-        <div className="description">{movie?.overview}</div>
+        <div className="description">{truncate(movie?.overview, 150)}</div>
       </div>
       <div className="Fade"></div>
     </header>
