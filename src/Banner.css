@@ -40,3 +40,29 @@
     #111
   );
 }
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 40px;
+}
+.nav_bg {
+  background-color: #111111;
+}
+
+.logo {
+  width: 60px;
+  object-fit: contain;
+  padding: 10px;
+  position: fixed;
+}
+
+.profile {
+  width: 30px;
+  object-fit: contain;
+  position: fixed;
+  right: 10px;
+}
