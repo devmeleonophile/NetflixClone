@@ -15,7 +15,7 @@ function List() {
     }
   ];
   const redirect = () => {
-    navigate("/");
+    navigate("/home");
   };
   const [Movies, setMovies] = useState(items);
 

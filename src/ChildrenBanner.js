@@ -2,11 +2,11 @@ import axios from "./axios";
 import React, { useEffect, useState } from "react";
 import "./Banner.css";
 import netflixLogo from "./images/netflix-logo.png";
-import netflixavtar from "./images/Netflix-avatar.png";
+import childLogo from "./images/child_logo.png";
 
 import { redirect, useLocation, useNavigate } from "react-router-dom";
 
-function Banner({ fetchData }) {
+function ChildrenBanner({ fetchData }) {
   const [movie, setMovie] = useState([]);
   const [items, setItems] = useState([]);
   const [show, handleShow] = useState(false);
@@ -79,7 +79,7 @@ function Banner({ fetchData }) {
         <img className="logo" src={netflixLogo} alt="netflix_logo" />
         <img
           className="profile"
-          src={netflixavtar}
+          src={childLogo}
           alt="netflix_logo"
           onClick={redirector}
         />
@@ -101,4 +101,4 @@ function Banner({ fetchData }) {
   );
 }
 
-export default Banner;
+export default ChildrenBanner;

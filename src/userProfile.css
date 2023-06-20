@@ -1,0 +1,52 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.ProfilePage {
+  background-color: #111;
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.userprof_title {
+  color: white;
+  font-size: 30px;
+  margin: 10px;
+}
+.userLogo {
+  width: 128px;
+  height: 128px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.profiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profiles > div {
+  padding: 20px;
+}
+
+.userName {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 5px;
+}
+.AddUser {
+  width: 128px;
+  height: 128px;
+  border: 2px solid white;
+  background-color: grey;
+  font-size: 35px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0px;
+}

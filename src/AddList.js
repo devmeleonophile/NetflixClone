@@ -17,7 +17,7 @@ function AddList() {
     setItems("");
   };
   const redirect = () => {
-    navigate("/");
+    navigate("/home");
   };
   return (
     <div>
