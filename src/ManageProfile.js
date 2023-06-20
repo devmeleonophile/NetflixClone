@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import netflixavtar from "./images/Netflix-avatar.png";
 import childLogo from "./images/child_logo.png";
@@ -6,12 +6,17 @@ import "./userProfile.css";
 
 function ManageProfile() {
   const [users, setUsers] = useState([]);
+  const [showAdd, setShowAdd] = useState(true);
   const navigate = useNavigate();
   const redirector = () => {
     navigate("/home");
   };
   const redirectChild = () => {
     navigate("/children");
+  };
+  const addUserLogo = () => {
+    const addNewUserProfile = [...users, []];
+    setUsers(addNewUserProfile);
   };
   return (
     <div className="ProfilePage">
@@ -28,6 +33,22 @@ function ManageProfile() {
           />
           <h6 className="userName">Rajesh</h6>
         </div>
+        {users.map((item, i) => {
+          return (
+            i < 2 && (
+              <div className="main_profile">
+                <img
+                  className="userLogo"
+                  src={netflixavtar}
+                  alt="userProfile"
+                  onClick={redirector}
+                />
+                <h6 className="userName">Rajesh</h6>
+              </div>
+            )
+          );
+        })}
+
         <div className="children_profile">
           <img
             className="userLogo"
@@ -37,10 +58,14 @@ function ManageProfile() {
           />
           <h6 className="userName">children</h6>
         </div>
-        <div>
-          <button className="AddUser">+</button>
-          <h6 className="userName">Add User</h6>
-        </div>
+        {showAdd && (
+          <div>
+            <button className="AddUser" onClick={addUserLogo}>
+              +
+            </button>
+            <h6 className="userName">Add User</h6>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -22,6 +22,11 @@ body {
   height: 128px;
   border-radius: 10px;
   cursor: pointer;
+  transition: transform 450ms;
+}
+.userLogo:hover {
+  transform: scale(1.08);
+  opacity: 1;
 }
 .profiles {
   display: flex;
@@ -49,4 +54,10 @@ body {
   border-radius: 10px;
   cursor: pointer;
   padding: 0px;
+  transition: transform 450ms;
+}
+
+.AddUser:hover {
+  transform: scale(1.08);
+  opacity: 1;
 }
