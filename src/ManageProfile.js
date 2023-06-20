@@ -18,6 +18,12 @@ function ManageProfile() {
     const addNewUserProfile = [...users, []];
     setUsers(addNewUserProfile);
   };
+  useEffect(() => {
+    if (users.length >= 2) {
+      setShowAdd(false);
+    }
+  }, [users]);
+
   return (
     <div className="ProfilePage">
       <div>
