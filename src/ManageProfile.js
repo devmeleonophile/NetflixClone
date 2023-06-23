@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import netflixavtar from "./images/Netflix-avatar.png";
 import childLogo from "./images/child_logo.png";
 import "./userProfile.css";
@@ -23,6 +23,13 @@ function ManageProfile() {
       setShowAdd(false);
     }
   }, [users]);
+  // useEffect(() => {
+  //   const getUsers = JSON.parse(localStorage.getItem("users"));
+  //   if (getUsers) setUsers(getUsers);
+  // }, []);
+  // useEffect(() => {
+  //   localStorage.setItem("users", JSON.stringify(users));
+  // }, [users]);
 
   return (
     <div className="ProfilePage">

@@ -18,7 +18,9 @@ function List() {
     navigate("/home");
   };
   const [Movies, setMovies] = useState(items);
-
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
   return (
     <div className="List-Compo">
       {Movies.map((movie) => {
@@ -39,9 +41,11 @@ function List() {
                 src={`${url}${movie.image}`}
                 alt={movie.title}
               />
-              <div>
+              <div className="content-cont">
                 <h2 className="List_title ">{movie.title}</h2>
-                <p className="list_description">{movie.description}</p>
+                <p className="list_description">
+                  {truncate(movie?.overview, 150)}
+                </p>
                 <button className="button">play</button>
                 <button onClick={() => redirect()} className="button">
                   Go back to Home

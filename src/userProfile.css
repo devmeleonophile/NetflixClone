@@ -61,3 +61,16 @@ body {
   transform: scale(1.08);
   opacity: 1;
 }
+
+@media only screen and (width<600px) {
+  .profiles {
+    display: flex;
+    flex-direction: column;
+  }
+  .profiles > div {
+    padding: 10px;
+  }
+  .ProfilePage {
+    padding: 10px;
+  }
+}
