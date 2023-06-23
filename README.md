@@ -1,2 +1,2 @@
 # NetflixClone
-Created with CodeSandbox
+Building this most exciting Netflix clone by using react 
