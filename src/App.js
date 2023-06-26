@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddList from "./AddList";
 import "./App.css";
 import ChildrenHome from "./ChildrenHome";
+import EditProfile from "./EditProfiles";
 import Home from "./Home";
 import List from "./List";
 import ManageProfile from "./ManageProfile";
@@ -17,6 +18,7 @@ class App extends Component {
             <Route path="/" Component={ManageProfile} />
             <Route path="/home/List" Component={List} />
             <Route path="/home/addlist" Component={AddList} />
+            <Route path="/editprofiles" Component={EditProfile} />
           </Routes>
         </Router>
       </div>

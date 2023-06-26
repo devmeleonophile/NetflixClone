@@ -68,9 +68,31 @@ body {
     flex-direction: column;
   }
   .profiles > div {
-    padding: 10px;
+    padding: 5px;
   }
   .ProfilePage {
     padding: 10px;
+  }
+  .userLogo {
+    width: 110px;
+    height: 110px;
+    margin: 20px;
+  }
+  .AddUser {
+    width: 110px;
+    height: 110px;
+  }
+  .userName {
+    margin: 10px;
+  }
+
+  .AddingUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .AddUser {
+    margin: 20px;
   }
 }

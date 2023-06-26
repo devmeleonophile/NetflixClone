@@ -1,0 +1,60 @@
+.EditProfiles {
+  background: #111111;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EditProfiles > div {
+  margin: 20px;
+}
+.main_profile {
+  text-align: center;
+}
+.children_profile {
+  text-align: center;
+}
+.delete_Button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.homeButton {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 5px;
+  border: none;
+}
+
+@media only screen and (width<600px) {
+  .EditProfiles {
+    display: flex;
+    flex-direction: column;
+  }
+  .EditProfiles > div {
+    margin: 10px;
+  }
+  .main_profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .children_profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userName {
+    margin: 20px;
+  }
+}

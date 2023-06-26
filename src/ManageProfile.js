@@ -3,6 +3,7 @@ import { json, useNavigate } from "react-router-dom";
 import netflixavtar from "./images/Netflix-avatar.png";
 import childLogo from "./images/child_logo.png";
 import "./userProfile.css";
+import EditProfile from "./EditProfiles";
 
 function ManageProfile() {
   const [users, setUsers] = useState([]);
@@ -15,50 +16,43 @@ function ManageProfile() {
     navigate("/children");
   };
   const addUserLogo = () => {
-    const addNewUserProfile = [...users, []];
+    const addNewUserProfile = [[], ...users];
     setUsers(addNewUserProfile);
   };
   useEffect(() => {
-    if (users.length >= 2) {
+    if (users.length >= 3) {
       setShowAdd(false);
     }
   }, [users]);
-  // useEffect(() => {
-  //   const getUsers = JSON.parse(localStorage.getItem("users"));
-  //   if (getUsers) setUsers(getUsers);
-  // }, []);
-  // useEffect(() => {
-  //   localStorage.setItem("users", JSON.stringify(users));
-  // }, [users]);
-
+  useEffect(() => {
+    const getUsers = JSON.parse(localStorage.getItem("users"));
+    if (getUsers) setUsers(getUsers);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
+  const redirecttoEdit = () => {
+    navigate("/editprofiles", {
+      state: users
+    });
+  };
   return (
     <div className="ProfilePage">
       <div>
         <h3 className="userprof_title">Who's Watching?</h3>
       </div>
       <div className="profiles">
-        <div className="main_profile">
-          <img
-            className="userLogo"
-            src={netflixavtar}
-            alt="userProfile"
-            onClick={redirector}
-          />
-          <h6 className="userName">Rajesh</h6>
-        </div>
         {users.map((item, i) => {
           return (
-            i < 2 && (
-              <div className="main_profile">
-                <img
-                  className="userLogo"
-                  src={netflixavtar}
-                  alt="userProfile"
-                  onClick={redirector}
-                />
-                <h6 className="userName">Rajesh</h6>
-              </div>
-            )
+            <div className="main_profile">
+              <img
+                className="userLogo"
+                src={netflixavtar}
+                alt="userProfile"
+                onClick={redirector}
+              />
+              <h6 className="userName">Rajesh</h6>
+            </div>
           );
         })}
 
@@ -72,7 +66,7 @@ function ManageProfile() {
           <h6 className="userName">children</h6>
         </div>
         {showAdd && (
-          <div>
+          <div className="AddingUser">
             <button className="AddUser" onClick={addUserLogo}>
               +
             </button>
@@ -80,6 +74,7 @@ function ManageProfile() {
           </div>
         )}
       </div>
+      <button onClick={redirecttoEdit}>ManageProfiles</button>
     </div>
   );
 }
