@@ -1,5 +1,5 @@
 import axios from "./axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./Banner.css";
 import netflixLogo from "./images/netflix-logo.png";
 import netflixavtar from "./images/Netflix-avatar.png";
@@ -11,6 +11,8 @@ function Banner({ fetchData }) {
   const [items, setItems] = useState([]);
   const [show, handleShow] = useState(false);
   const navigate = useNavigate();
+  const [storeData, setStoreData] = useState([]);
+  const storeDataRef = React.useRef(storeData);
 
   useEffect(() => {
     async function fetchUrl() {
@@ -38,6 +40,28 @@ function Banner({ fetchData }) {
     };
   }, []);
 
+  const movieDetails = useMemo(() => {
+    return {
+      MovieName: movie.name,
+      MoviePoster: movie.backdrop_path
+    };
+  }, [movie]);
+
+  useEffect(() => {
+    setStoreData((movie) => [...movie, movieDetails.MovieName]);
+  }, [movieDetails, movie]);
+
+  useEffect(() => {
+    const setItem = JSON.parse(localStorage.getItem("wishItems"));
+
+    if (setItem) {
+      setStoreData(setItem);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("wishItems", JSON.stringify(storeData));
+  }, [storeData]);
+
   const redirect = () => {
     navigate("List", {
       state: {
@@ -48,10 +72,11 @@ function Banner({ fetchData }) {
       }
     });
   };
+
   const toList = () => {
     navigate("/home/addList", {
       state: {
-        value: movie
+        value: storeData
       }
     });
   };

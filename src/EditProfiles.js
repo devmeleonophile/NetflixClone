@@ -56,7 +56,7 @@ function EditProfile(props) {
         <div className="children_profile">
           <img className="userLogo" src={childLogo} alt="childProfile" />
           <h6 className="userName">children</h6>
-          <button className="delete_Button">Delete</button>
+          <button className="delete_Button">Edit</button>
         </div>
         <div className="GoBack">
           <button className="homeButton" onClick={goBackToProfiles}>
