@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import netflixavtar from "./images/Netflix-avatar.png";
 import childLogo from "./images/child_logo.png";
 import "./userProfile.css";
 import EditProfile from "./EditProfiles";
+import Modal from "./Modal";
 
 function ManageProfile() {
   const [users, setUsers] = useState([]);
+  const [modal, showModal] = useState(false);
   const [showAdd, setShowAdd] = useState(true);
+  const [names, setNames] = useState("");
+  const pull_data = (data) => {
+    setNames(data);
+  };
+
   const navigate = useNavigate();
   const redirector = () => {
     navigate("/home");
@@ -16,8 +23,7 @@ function ManageProfile() {
     navigate("/children");
   };
   const addUserLogo = () => {
-    const addNewUserProfile = [[], ...users];
-    setUsers(addNewUserProfile);
+    showModal(!modal);
   };
   useEffect(() => {
     if (users.length >= 3) {
@@ -36,6 +42,17 @@ function ManageProfile() {
       state: users
     });
   };
+  ///Modal button Function
+  const handleClick = () => {
+    if (names) {
+      const addNewUserProfile = [[], ...users];
+      setUsers(addNewUserProfile);
+      showModal(false);
+      console.log("function called");
+    } else {
+      alert("enter the name");
+    }
+  };
   return (
     <div className="ProfilePage">
       <div>
@@ -51,7 +68,7 @@ function ManageProfile() {
                 alt="userProfile"
                 onClick={redirector}
               />
-              <h6 className="userName">Rajesh</h6>
+              <h6 className="userName">{names}</h6>
             </div>
           );
         })}
@@ -65,6 +82,7 @@ function ManageProfile() {
           />
           <h6 className="userName">children</h6>
         </div>
+
         {showAdd && (
           <div className="AddingUser">
             <button className="AddUser" onClick={addUserLogo}>
@@ -74,7 +92,10 @@ function ManageProfile() {
           </div>
         )}
       </div>
-      <button onClick={redirecttoEdit}>ManageProfiles</button>
+      <button className="manage-Button" onClick={redirecttoEdit}>
+        ManageProfiles
+      </button>
+      {modal && <Modal func={pull_data} handleClick={handleClick} />}
     </div>
   );
 }
